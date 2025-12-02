@@ -50,7 +50,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/devops-app:latest, ${{ secrets.DOCKER_USERNAME }}/devops-app:${{ github.sha }}
       
-
+     - name: Push to Docker Hub
+      run: |
+        docker tag devops-app:latest ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
 
   
+
 
